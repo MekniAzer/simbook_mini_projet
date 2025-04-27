@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Livre{% endblock %}
+
+{% block body %}
+    <h1>Edit Livre</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.titre) }}
+    {{ form_row(form.slug) }}
+    {{ form_row(form.image) }}
+    {{ form_row(form.resume) }}
+    {{ form_row(form.editeur) }}
+    {{ form_row(form.dateEdition) }}
+    {{ form_row(form.prix) }}
+    {{ form_row(form.isbn) }}
+    {{ form_row(form.cat) }}  {# If you want to edit the category as well #}
+    <button class="btn btn-primary rigel" type="submit">Confirmer</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_livres_all') }}" class="right-align btn btn-danger">Annuler</a>
+{% endblock %}

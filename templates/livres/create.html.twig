@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Create New Book</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.titre) }}
+    {{ form_row(form.slug) }}
+    {{ form_row(form.isbn) }}
+    {{ form_row(form.image) }}
+    {{ form_row(form.price) }}
+    {{ form_row(form.submit) }}
+    {{ form_end(form) }}
+{% endblock %}

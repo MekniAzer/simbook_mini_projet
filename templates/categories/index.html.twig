@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoriesController!{% endblock %}
+
+{% block body %}
+    <H1>Liste des Catégories</H1>
+
+    <a href="#" class="btn btn-primary">Ajouter une nouvelle catégorie</a>
+
+    <ul>
+    {% for cat in categories  %}
+       <li>{{ cat.libelle }} <a href="#">Editer</a> <a href="#">Voi détail...</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}
