@@ -8,7 +8,15 @@
     {{ form_row(form.slug) }}
     {{ form_row(form.isbn) }}
     {{ form_row(form.image) }}
-    {{ form_row(form.price) }}
-    {{ form_row(form.submit) }}
+    {{ form_row(form.resume) }}
+    {{ form_row(form.editeur) }}
+    {{ form_row(form.dateEdition) }}
+    {{ form_row(form.prix) }}
+    {{ form_row(form.cat) }}
+
+    <button type="submit" class="btn btn-primary rigel">Confirmer</button>
+
     {{ form_end(form) }}
+
+    <a href="{{ path('app_livres_all') }}" class="btn btn-danger right-align">Annuler</a>
 {% endblock %}

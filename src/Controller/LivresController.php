@@ -56,7 +56,7 @@ public function show(Livres $livre): Response
     return $this->render('livres/show.html.twig', ['livre'=>$livre]);}
 
     #[Route('/admin/livres/create', name: 'app_livres_create')]
-    public function create(EntityManagerInterface $em): Response
+    public function create2(EntityManagerInterface $em): Response
     { $livre=new Livres();
         $d=new \DateTime("2025-01-01");
         $livre->setTitre("titre 1")
@@ -123,7 +123,31 @@ public function show(Livres $livre): Response
     }
 
 
+    #[Route('/admin/livres/create', name: 'app_livres_create')]
+    public function create(EntityManagerInterface $em, Request $request): Response
+    {
+        // Create a new Livre entity instance
+        $livre = new Livres();
 
+        // Create the form for Livre using LivresType
+        $form = $this->createForm(LivresType::class, $livre);
+
+        // Handle the form submission
+        $form->handleRequest($request);
+
+        // Check if the form is submitted and valid
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Persist the Livre entity to the database
+            $em->persist($livre);
+            $em->flush();
+
+            // Redirect to the list of Livres after successful creation
+            return $this->redirectToRoute('app_livres_all');
+        }
+
+        // Render the form view in the template
+        return $this->render('livres/create.html.twig', ['form' => $form->createView()]);
+    }
 
 
 }

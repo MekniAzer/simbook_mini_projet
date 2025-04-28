@@ -29,9 +29,11 @@
         {% endfor %}
 
     </table>
-    <div class="navigation">
+    <div class="navigation rigel">
         {{ knp_pagination_render(livres) }}
     </div>
+
+    <a href="{{ path('app_livres_create') }}" class="btn btn-primary right-align">Ajouter un nouveau livre</a>
 
 
 {% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace Admin : détail d'une catégorie{% endblock %}
+
+{% block body %}
+    <h1>Détail de la catégorie</h1>
+    <div class="row">
+        <div class="col-3">
+            <!-- You can add a category-specific image if available -->
+            <img src="https://picsum.photos/300/?id={{ categorie.id }}" alt="photo catégorie" class="img-fluid">
+        </div>
+        <div class="col-5">
+            <h2>{{ categorie.libelle }}</h2>
+            <h4>Slug: {{ categorie.slug }}</h4>
+            <h4>Description:</h4>
+            <p>{{ categorie.description }}</p>
+        </div>
+    </div>
+
+    <a href="{{ path('admin_categories') }}" class="btn btn-secondary right-align">Retour à la liste des catégories</a>
+{% endblock %}

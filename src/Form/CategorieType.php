@@ -20,7 +20,7 @@ class CategorieType extends AbstractType
             ->add('slug',TextType::class, ['label' => 'Slug :'])
             ->add('description',TextareaType::class, ['label' => 'Description :',
                 'required' => false])
-            ->add('save', SubmitType::class)
+
         ;
     }
 

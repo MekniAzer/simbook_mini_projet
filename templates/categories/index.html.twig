@@ -1,15 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CategoriesController!{% endblock %}
+{% block title %}Categories List{% endblock %}
 
 {% block body %}
-    <H1>Liste des Catégories</H1>
+    <h1>Categories List</h1>
 
-    <a href="#" class="btn btn-primary">Ajouter une nouvelle catégorie</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Libelle</th>
+            <th>Slug</th>
+            <th>Description</th>
+            <th colspan="3">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.libelle }}</td>
+                <td>{{ categorie.slug }}</td>
+                <td>{{ categorie.description }}</td>
+                <td style="width: 150px"><a href="{{ path('admin_categories_show', { 'id': categorie.id }) }}" class="btn btn-info">Voir détail..</a></td>
+                <td><a href="{{ path('admin_categories_edit', { 'id': categorie.id }) }}" class="btn btn-warning">Editer</a></td>
+                <td><a class="btn btn-danger" href="{{ path('admin_categories_delete', { 'id': categorie.id }) }}">Supprimer</a></td>
 
-    <ul>
-    {% for cat in categories  %}
-       <li>{{ cat.libelle }} <a href="#">Editer</a> <a href="#">Voi détail...</a></li>
-    {% endfor %}
-    </ul>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation rigel">
+        {{ knp_pagination_render(categories) }}
+    </div>
+
+    <a href="{{ path('admin_categories_create') }}" class="btn btn-primary right-align">Creer une nouvelle categorie</a>
+
+
 {% endblock %}
