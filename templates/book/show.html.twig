@@ -1,0 +1,20 @@
+{% extends 'base2.html.twig' %}
+
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="card mb-4">
+            <img src="{{ book.image }}" class="card-img-top" alt="Book image">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.titre }}</h5>
+                <p class="card-text">By {{ book.editeur }}</p>
+                <p class="card-text"><strong>{{ book.cat.libelle }}</strong></p>
+                <p class="card-text">{{ book.resume }}</p>
+                <p class="card-text">ISBN: {{ book.isbn }}</p>
+                <p class="card-text">Price: ${{ book.prix }}</p>
+                <p class="card-text">Edition Date: {{ book.dateEdition|date('Y-m-d') }}</p>
+                <a href="{{ path('app_books') }}" class="btn btn-primary">Back to Library</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

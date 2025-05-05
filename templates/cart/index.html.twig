@@ -1,0 +1,40 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>Your Cart</h1>
+
+        {% if cart is empty %}
+            <p>Your cart is empty.</p>
+        {% else %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for book in cart %}
+                    <tr>
+                        <td>{{ book.titre }}</td>
+                        <td>{{ book.editeur }}</td>
+                        <td>{{ book.prix }}</td>
+                        <td>
+                            <a href="{{ path('app_books_show2', {'id': book.id}) }}" class="btn btn-info">View Details</a>
+                            <a href="{{ path('app_books_remove_from_cart', {'id': book.id}) }}" class="btn btn-danger">Remove from Cart</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Checkout button -->
+            <div class="d-flex justify-content-end">
+                <a href="{{ path('app_checkout') }}" class="btn btn-success">Proceed to Checkout</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

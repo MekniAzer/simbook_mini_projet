@@ -1,5 +1,4 @@
 <?php
-
 // src/Entity/Livres.php
 
 namespace App\Entity;
@@ -40,9 +39,23 @@ class Livres
     #[ORM\Column(length: 255)]
     private ?string $isbn = null;
 
-    // Many-to-One relationship with Categories (fixed)
+    #[ORM\Column(length: 255, nullable: true)]  // Add this for the 'status' field
+    private ?string $status = null;
+
     #[ORM\ManyToOne(inversedBy: 'livres')]
     private ?Categories $cat = null;
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): static
+    {
+        $this->status = $status;
+
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -145,7 +158,6 @@ class Livres
         return $this;
     }
 
-    // Getter and Setter for 'cat' (Category)
     public function getCat(): ?Categories
     {
         return $this->cat;

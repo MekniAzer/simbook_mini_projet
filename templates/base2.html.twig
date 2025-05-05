@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+    <link rel="stylesheet" href="{{ asset('bootstrap.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
+    {% block stylesheets %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+    <style>
+        /* Navbar style */
+        .navbar {
+            background-color: #2c3e50;
+            padding: 10px 20px;
+        }
+
+        /* Cart Icon */
+        .navbar .cart-icon {
+            font-size: 20px;
+            color: white;
+            position: relative;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .navbar .cart-icon .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        /* Adding space for the main header */
+        .navbar .navbar-brand {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="{{ path('app_books') }}">Accueil</a>
+    <div class="d-flex ml-auto">
+        <a href="{{ path('app_cart') }}" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="badge">{{ app.session.get('cart', [])|length }}</span> <!-- Display Cart Count -->
+        </a>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    {% block body %}{% endblock %}
+</div>
+</body>
+</html>
+
+
